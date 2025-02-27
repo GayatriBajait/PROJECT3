@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Company Website</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-overlay">
+            <h1>Welcome to <span>Our Ultimate Company</span></h1>
+            <p>Innovating the Future, One Step at a Time</p>
+            <a href="#services" class="btn-primary">Explore Our Services</a>
+            <div class="cta-container">
+                <a href="#about" class="btn-secondary">Learn More</a>
+                <a href="#contact" class="btn-tertiary">Get in Touch</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="carousel">
+        <div class="slider">
+            <div class="slide"><img src="https://dallasdesignco.com/wp-content/uploads/2021/12/corporate-branding-strategy-dallas-design-company.jpg" alt="Image 1"></div>
+            <div class="slide"><img src="https://th.bing.com/th/id/OIP.WFbC6Kv8HcD6vJbfsrpNuQHaE8?rs=1&pid=ImgDetMain" alt="Image 2"></div>
+            <div class="slide"><img src="https://th.bing.com/th/id/OIP.B-iurNKQFH5syCCW6U6zxwHaEW?rs=1&pid=ImgDetMain" alt="Image 3"></div>
+        </div>
+        <button class="prev" onclick="prevSlide()">&#10094;</button>
+        <button class="next" onclick="nextSlide()">&#10095;</button>
+        <div class="carousel-indicators">
+            <span class="dot" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+        <div class="caption-overlay">
+            <p id="carousel-caption">Empowering Businesses with Innovation</p>
+        </div>
+    
+
+    <section class="about">
+        <h2>About Us</h2>
+        <p>We are a leading company in innovation and technology, providing top-tier solutions worldwide.</p>
+        <p>With a commitment to excellence, we specialize in delivering cutting-edge digital solutions, advanced AI-driven technologies, and smart automation systems. Our team of experts is dedicated to pushing the boundaries of innovation, ensuring that businesses stay ahead in an ever-evolving global landscape.</p>
+    </section>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <p>We offer a wide range of services including consulting, development, and strategic marketing.</p>
+        <ul>
+            <li><strong>Business Consulting:</strong> Expert strategies to optimize operations.</li>
+            <li><strong>Software Development:</strong> High-quality web and mobile applications.</li>
+            <li><strong>Cybersecurity Services:</strong> Advanced security solutions.</li>
+            <li><strong>E-commerce Solutions:</strong> Build and manage online stores.</li>
+        </ul>
+    </section>
+    <section class="team">
+        <h2>Meet Our Team</h2>
+        <div class="team-container">
+            <div class="team-member">
+                <img src="https://cdn3.iconfinder.com/data/icons/avatars-flat/33/man_5-1024.png" alt="Team Member">
+                <p><strong>John Doe</strong></p>
+                <p>CEO & Founder</p>
+            </div>
+            <div class="team-member">
+                <img src="https://static.vecteezy.com/system/resources/previews/014/194/198/original/avatar-icon-human-a-person-s-badge-social-media-profile-symbol-the-symbol-of-a-person-vector.jpg" alt="Team Member">
+                <p><strong>Jane Smith</strong></p>
+                <p>Chief Technology Officer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://cdn3.iconfinder.com/data/icons/avatars-collection/256/47-512.png" alt="Team Member">
+                <p><strong>Robert Brown</strong></p>
+                <p>Head of Marketing</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="tel" placeholder="Your Phone Number" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll(".slide");
+        const totalSlides = slides.length;
+        const captions = [
+            "Corporate Branding Excellence",
+            "Innovative Business Strategies",
+            "Creative & Professional Solutions"
+        ];
+        
+        function showSlide() {
+            slides.forEach(slide => slide.style.display = "none");
+            slides[index].style.display = "flex";
+            document.getElementById("carousel-caption").innerHTML = `
+                <div class="caption-content">
+                    <button class="prev" onclick="prevSlide()">&#10094;</button>
+                    <span>${captions[index]}</span>
+                    <button class="next" onclick="nextSlide()">&#10095;</button>
+                </div>`;
+            updateDots();
+        }
+    
+        function nextSlide() {
+            index = (index + 1) % totalSlides;
+            showSlide();
+        }
+    
+        function prevSlide() {
+            index = (index - 1 + totalSlides) % totalSlides;
+            showSlide();
+        }
+    
+        function currentSlide(n) {
+            index = n;
+            showSlide();
+        }
+    
+        function updateDots() {
+            document.querySelectorAll(".dot").forEach((dot, i) => {
+                dot.classList.remove("active");
+                if (i === index) dot.classList.add("active");
+            });
+        }
+    
+        document.querySelectorAll(".dot").forEach((dot, i) => {
+            dot.addEventListener("click", () => {
+                currentSlide(i);
+            });
+        });
+    
+        showSlide();
+        setInterval(nextSlide, 5000);
+    </script>
+    
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Our Ultimate Company. All rights reserved.</p>
+            <p><strong>Main Office:</strong> 789 Future Avenue, Tech City, TX 75001</p>
+            <p><strong>Follow Us:</strong>
+                <a href="#" target="_blank">Facebook</a> |
+                <a href="#" target="_blank">Twitter</a> |
+                <a href="#" target="_blank">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+    
+</body>
+</html>
